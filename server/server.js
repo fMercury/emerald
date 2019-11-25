@@ -5,6 +5,9 @@ let express = require('express'),
     port = 5000;
 
 
+let routes = require('./api/routes/properties_routes');
+routes(app);
+
 app.use('/',
     (req, res) => res.json('version:' + '000')
 );
@@ -14,7 +17,7 @@ app.use(
 );
 
 app.use(
-    (err, req, res) => {
+    (err, req, res, next) => {
         console.error(err.stack);
         res.status(500).send('Hey, Something broke! :( ');
     });
