@@ -36,6 +36,32 @@ exports.search = (req, res) => {
 };
 
 exports.feature = (req, res) => {
+    let myURL = addSearchParams(req.query, new URL(emeraldURL))
+    let value = myCache.get(myURL.href);
+
+    if (value != undefined) {
+        const results = showFeature(value, req)
+        res.send({
+            results
+        });
+    }
+
+    if (value == undefined) {
+        console.log('------ request to original API')
+        request({ url: myURL.href, json: true }, (error, response, body) => {
+            if (error && response.statusCode === 500) {
+                console.error(err.stack);
+                return res.status(500).send('Hey, Something broke! :( ');
+            }
+            if (!error && response.statusCode === 200) {
+                myCache.set(myURL.href, body.data.properties, 100000000)
+                const results = showFeature(body.data.properties, req)
+                res.send({
+                    results
+                });
+            }
+        })
+    }
 };
 
 function addSearchParams(query, url) {
@@ -58,3 +84,9 @@ function simplifySearch(properties, req) {
     return results
 }
 
+function showFeature(properties, req) {
+    let results = properties
+        .filter(properties => properties.id == req.params.property_id)
+        .map(feature => feature[req.params.some_feature])
+    return results[0]
+}
