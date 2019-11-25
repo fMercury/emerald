@@ -21,6 +21,8 @@ http://localhost:5000/api/v2/properties/amenities/1?country=1&adults=1&children=
 
 cd front
 
+npm install
+
 npm start
 
 http://localhost:3000/
