@@ -1,0 +1,25 @@
+{
+  "name": "emerald",
+  "version": "1.0.0",
+  "description": "technical test backend",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fMercury/emerald.git"
+  },
+  "author": "Franco Berdun",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "node-cache": "^5.0.2",
+    "request": "^2.88.0"
+  },
+  "bugs": {
+    "url": "https://github.com/fMercury/emerald/issues"
+  },
+  "homepage": "https://github.com/fMercury/emerald#readme"
+}
