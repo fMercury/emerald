@@ -1,8 +1,11 @@
 # emerald
+---------------------------
 
 git clone https://github.com/fMercury/emerald.git
+
+cd emerald
+
 ---------------------------
--local
 
 cd server
 
@@ -13,7 +16,6 @@ npm start
 http://localhost:5000/api/v2/properties?country=1&adults=1&children=0&page=1
 
 http://localhost:5000/api/v2/properties/amenities/1?country=1&adults=1&children=0&page=1
-
 
 ---------------------------
 
