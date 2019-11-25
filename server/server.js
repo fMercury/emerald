@@ -4,6 +4,11 @@ let express = require('express'),
     hostname = '127.0.0.1',
     port = 5000;
 
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', "*");
+    res.header('Access-Control-Allow-Headers', "*");
+    next();
+});
 
 let routes = require('./api/routes/properties_routes');
 routes(app);
@@ -25,7 +30,4 @@ app.use(
 app.listen(port, hostname, () => {
     console.log(`Server running at http://${hostname}:${port}/`)
 })
-
-
-
 
